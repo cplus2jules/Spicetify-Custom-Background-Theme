@@ -2,30 +2,33 @@
 
 ### A fully dynamic and customisable theme that uses fullscreen images to greatly improve your Spotify experience.
 
+> [!WARNING]
+> **HEAVY DEVELOPMENT:** This version of the theme is currently undergoing a major refactor for Spotify v1.2.x. Features and UI are subject to rapid change.
+
 ---
 
 ### Dynamic Album Art
 
-<img src="preview_dynamic.gif" width="100%">
+<img src="preview/preview_dynamic.gif" width="100%">
 
 ---
 
 ### Custom Backgrounds <span style="font-size: 0.5em">(per playlist or app wide)</span>
 
-![preview](preview_playlist.png)
+![preview](preview/preview_playlist.png)
 
 ---
 
 ### Fullscreen Artist/Album Backgrounds
 
-![preview](preview.png)
-![preview](preview_album.png)
+![preview](preview/preview.png)
+![preview](preview/preview_album.png)
 
 ---
 
 ### Fully Customisable
 
-![preview](preview_custom.png)
+![preview](preview/preview_custom.png)
 
 #### How to Customise
 

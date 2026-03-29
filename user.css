@@ -542,12 +542,15 @@ HIDE BACKGROUNDS
 .main-entityHeader-shadow,
 [class*="main-actionBarBackground"],
 [class*="main-entityHeader-backgroundColor"],
+[class*="main-actionBar-ActionBar"], /* Target the action bar container itself */
+.main-actionBar-ActionBar,
 .main-playlistEditDetailsModal-content,
 ._2ajKWDiy6YvJu5wo8I1g {
     background: transparent !important;
     background-color: transparent !important;
     background-image: none !important;
     box-shadow: none !important;
+    border: none !important; /* Nuke any horizontal lines */
 }
 .Root__top-container {
     padding-top: 28px !important; /* Pushes content cleanly down below macOS Traffic Lights */
@@ -640,15 +643,17 @@ PLAYLIST PAGE
     background-color: transparent !important;
 }
 
-/* Unify the entire playlist/album page into one frosted card */
+/* Unify the entire playlist/album/artist page into one frosted card */
 section[data-testid="playlist-page"],
-section[data-testid="album-page"] {
+section[data-testid="album-page"],
+section[data-testid="artist-page"] {
     background: rgba(0, 0, 0, 0.2) !important;
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    margin: 16px;
+    margin: 8px !important;
+    margin-top: 64px !important; /* Give space for the top bar while keeping width wide */
     overflow: hidden; /* Ensure rounded corners cut off child elements */
 }
 
@@ -657,24 +662,30 @@ section[data-testid="album-page"] {
 .main-view-container .os-viewport main section > div[style],
 section[data-testid="playlist-page"] > div[style],
 section[data-testid="album-page"] > div[style],
+section[data-testid="artist-page"] > div[style],
 .main-entityHeader-background,
-.main-entityHeader-overlay {
+.main-entityHeader-overlay,
+.main-actionBar-ActionBar, /* Ensure action bar is transparent */
+.main-entityHeader-container {
     background: transparent !important;
     background-color: transparent !important;
     background-image: none !important;
+    border: none !important;
 }
 
 /* Remove the aggressive separate styling from contentSpacing so we don't double-blur */
 section[data-testid="playlist-page"] .contentSpacing,
 section[data-testid="album-page"] .contentSpacing,
+section[data-testid="artist-page"] .contentSpacing,
 section[data-testid="playlist-page"] [class*="contentSpacing"],
-section[data-testid="album-page"] [class*="contentSpacing"] {
+section[data-testid="album-page"] [class*="contentSpacing"],
+section[data-testid="artist-page"] [class*="contentSpacing"] {
     background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     border: none !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 32px !important; /* RESTORE some horizontal padding so text isn't touching the edge of the glass */
 }
 
 
@@ -1217,16 +1228,44 @@ RIGHT SIDEBAR
 
 /* set transparent background */
 .main-nowPlayingView-section {
-    background: none;
+    background: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 .Root__right-sidebar aside {
-    background: none;
+    background: none !important;
 }
-.main-nowPlayingView-content.main-nowPlayingView-gradient{
-    background:none !important;
+
+/* Nuke all inline gradients and background overlays in the Now Playing sidebar */
+.main-nowPlayingView-content,
+.main-nowPlayingView-content.main-nowPlayingView-gradient,
+.main-nowPlayingView-contextItemInfo,
+.main-nowPlayingView-contextItemInfo::before,
+.main-nowPlayingView-contextItemInfo::after,
+.main-nowPlayingView-aboutArtist::before,
+.main-nowPlayingView-aboutArtist::after,
+.main-nowPlayingView-section::before,
+.main-nowPlayingView-section::after {
+    background: transparent !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
+
+/* Hard override for any inline element with a background gradient in right sidebar */
+.Root__right-sidebar .os-viewport > div > div[style],
+.main-nowPlayingView-content > div > [style],
+.main-nowPlayingView-content > div[style] {
+    background: transparent !important;
+    background-image: none !important;
+}
+
+/* Soften the strong drop shadow on the right sidebar header */
+.main-nowPlayingView-header,
+.Root__right-sidebar header,
 .fAte2d0xETy7pnDUAgHY {
-    box-shadow: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important; 
 }
 /* Fix Canvas Video */
 .main-nowPlayingView-coverArt canvas,
