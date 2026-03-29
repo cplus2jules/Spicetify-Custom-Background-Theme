@@ -21,8 +21,11 @@ NAVIGATION BAR
 -------------------
 */
 .Root__nav-bar {
-    background: linear-gradient(rgba(var(--spice-rgb-sidebar), 0.3) 50%, transparent) !important;
-    border-radius: 0 !important;
+    background: rgba(var(--spice-rgb-sidebar), 0.15) !important;
+    backdrop-filter: blur(20px);
+    border-radius: 16px !important;
+    margin: 8px 0 8px 8px !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 .Root__top-bar {
     z-index: 10 !important;
@@ -271,6 +274,7 @@ PLAYER BAR
 */
 footer.main-nowPlayingBar-container {
     border: none;
+    padding-bottom: 12px;
 }
 .player-controls__buttons.player-controls__buttons--new-icons {
     margin: 0 20px 0 30px;
@@ -526,19 +530,24 @@ div.main-gridContainer-gridContainer.main-shelf-shelfGrid > a >div:hover::after{
 HIDE BACKGROUNDS
 -------------------
 */
+/* OVERRIDE NATIVE CSS VARIABLES FOR BACKGROUNDS */
+:root, .Root__main-view, .Root__main-view * {
+    --background-base: transparent !important;
+    --background-noise: none !important;
+}
+
 .main-actionBarBackground-background,
-[class*="main-actionBarBackground"],
-.BL__GuO2JsHMR6RgNfwY,
-.rezqw3Q4OEPB1m4rmwfw,
-.main-nowPlayingBar-container,
-.main-entityHeader-background,
-.main-entityHeader-backgroundColor,
 .main-entityHeader-overlay,
-.main-actionButtons,
-[class*="main-entityHeader-backgroundColor"] {
+.main-entityHeader-backgroundColor,
+.main-entityHeader-shadow,
+[class*="main-actionBarBackground"],
+[class*="main-entityHeader-backgroundColor"],
+.main-playlistEditDetailsModal-content,
+._2ajKWDiy6YvJu5wo8I1g {
     background: transparent !important;
-    background-image: none !important;
     background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
 }
 .Root__top-container {
     padding-top: 28px !important; /* Pushes content cleanly down below macOS Traffic Lights */
@@ -567,8 +576,9 @@ HIDE BACKGROUNDS
 }
 .main-topBar-background{
     display: block !important;
-    background:transparent !important;
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.15) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 div.main-topBar-topbarContentWrapper.center > div > div > form > input{
     background-color:rgba(0,0,0,0.3) !important;
@@ -584,10 +594,20 @@ div.main-view-container__scroll-node-child > main > div > div::before,
 .os-viewport main > div::before, .os-viewport main > div > div::before,
 .os-viewport main section > div:first-child,
 .os-viewport main section > div:first-child::before,
-.os-viewport main section > div:first-child::after {
+.os-viewport main section > div:first-child::after,
+section[data-testid="playlist-page"] > div,
+section[data-testid="playlist-page"] > div::before,
+section[data-testid="playlist-page"] > div::after,
+section[data-testid="album-page"] > div,
+section[data-testid="album-page"] > div::before,
+section[data-testid="album-page"] > div::after,
+section[data-testid="artist-page"] > div,
+section[data-testid="artist-page"] > div::before,
+section[data-testid="artist-page"] > div::after {
     background: transparent !important;
     background-color: transparent !important;
     background-image: none !important;
+    box-shadow: none !important;
 }
 div.main-view-container__scroll-node-child > main > section[data-testid="artist-page"] > div > div,
 .os-viewport main > section[data-testid="artist-page"] > div > div,
@@ -612,8 +632,49 @@ PLAYLIST PAGE
 .playlist-playlist-playlistImageContainer {
     display: none;
 }
-.playlist-playlist-playlistContent {
+.playlist-playlist-playlistContent,
+.main-entityHeader-container,
+.main-entityHeader-background,
+.main-entityHeader-overlay {
     background: none !important;
+    background-color: transparent !important;
+}
+
+/* Unify the entire playlist/album page into one frosted card */
+section[data-testid="playlist-page"],
+section[data-testid="album-page"] {
+    background: rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 16px;
+    overflow: hidden; /* Ensure rounded corners cut off child elements */
+}
+
+/* NUKE Spotify's native gradient on playlist/album pages */
+.main-view-container .os-viewport main > div > div[style],
+.main-view-container .os-viewport main section > div[style],
+section[data-testid="playlist-page"] > div[style],
+section[data-testid="album-page"] > div[style],
+.main-entityHeader-background,
+.main-entityHeader-overlay {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* Remove the aggressive separate styling from contentSpacing so we don't double-blur */
+section[data-testid="playlist-page"] .contentSpacing,
+section[data-testid="album-page"] .contentSpacing,
+section[data-testid="playlist-page"] [class*="contentSpacing"],
+section[data-testid="album-page"] [class*="contentSpacing"] {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 
@@ -639,8 +700,12 @@ img.main-entityHeader-image,
 }
 
 /* tracklist sticky header */
-div.main-trackList-trackListHeader._2ajKWDiy6YvJu5wo8I1g {
-    display: none;
+.main-trackList-trackListHeader,
+.main-trackList-trackListHeaderStuck,
+._2ajKWDiy6YvJu5wo8I1g {
+    background: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
 /*
 -------------------
@@ -774,8 +839,6 @@ BACKGROUND ELEMENTS
     pointer-events: none;
 }
 .bg-image-container {
-    -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.75) 0px, rgba(0, 0, 0, 0.1) 100%);
-    mask-image: linear-gradient(rgba(0, 0, 0, 0.75) 0px, rgba(0, 0, 0, 0.1) 100%);
     height: 100%;
     width: 100%;
     position: absolute;
@@ -785,54 +848,59 @@ img.bg-main-image {
     position: absolute;
     height: 100%;
     object-fit: cover;
-    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 0, black 250px, black calc(100% - 250px), rgba(0, 0, 0, 0.9) 100%);
-    mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 0, black 250px, black calc(100% - 250px), rgba(0, 0, 0, 0.9) 100%);
 }
 
-/* GRADUAL BLUR LAYERS */
+/* GRADUAL BLUR LAYERS — scoped to .bg-main-container only */
 .gradual-blur-container {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 1; /* Sits directly over the background image layer */
+    z-index: 1;
 }
 
 .gradual-blur-container.blur-enabled {
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
 }
 
 .gradual-blur-layer {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    left: 0;
+    right: 0;
+    pointer-events: none;
 }
 
+/* Bottom blur: fades the lower portion of the bg image */
 .gradual-blur-layer-1 {
-    backdrop-filter: blur(2px);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 35%, transparent 50%);
-    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 35%, transparent 50%);
+    bottom: 0;
+    height: 60%;
+    backdrop-filter: blur(4px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
 }
 .gradual-blur-layer-2 {
-    backdrop-filter: blur(5px);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 35%, black 50%, black 70%, transparent 85%);
-    mask-image: linear-gradient(to bottom, transparent 35%, black 50%, black 70%, transparent 85%);
+    bottom: 0;
+    height: 45%;
+    backdrop-filter: blur(12px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
 }
 .gradual-blur-layer-3 {
-    backdrop-filter: blur(10px);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 70%, black 85%, black 100%);
-    mask-image: linear-gradient(to bottom, transparent 70%, black 85%, black 100%);
+    bottom: 0;
+    height: 30%;
+    backdrop-filter: blur(24px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
 }
 .gradual-blur-layer-4 {
-    backdrop-filter: blur(20px);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 85%, black 100%);
-    mask-image: linear-gradient(to bottom, transparent 85%, black 100%);
-}
-.gradual-blur-layer-5 {
+    bottom: 0;
+    height: 20%;
     backdrop-filter: blur(40px);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 95%, black 100%);
-    mask-image: linear-gradient(to bottom, transparent 95%, black 100%);
-    background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.45) 100%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
+}
+/* Layer 5 unused — kept for future use */
+.gradual-blur-layer-5 {
+    display: none;
 }
 
 .lyrics-lyrics-background {
@@ -1176,7 +1244,11 @@ RIGHT SIDEBAR
 
 /* set transparent background for section containers */
 .Root__right-sidebar {
-    background: linear-gradient(rgba(var(--spice-rgb-sidebar), 0.3) 50%, transparent) !important;
+    background: rgba(var(--spice-rgb-sidebar), 0.15) !important;
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px !important;
+    margin: 8px 8px 8px 0 !important;
 }
 
 /* fix header padding */

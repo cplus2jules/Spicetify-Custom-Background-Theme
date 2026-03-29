@@ -95,9 +95,15 @@ class GalaxyTheme {
     
     let lastSrc = "";
     const checkForImage = () => {
-       const img = document.querySelector(".main-entityHeader-imageContainer img") || document.querySelector(".main-entityHeader-image");
+       const img = document.querySelector(".main-entityHeader-imageContainer img") || 
+                   document.querySelector(".main-entityHeader-image") ||
+                   document.querySelector(".main-image-image") ||
+                   document.querySelector("img.main-entityHeader-shadow");
+       
        if (img && img.src && img.src !== lastSrc) {
            lastSrc = img.src;
+           // If it's a blob or placeholder, skip or wait
+           if (img.src.startsWith("blob:") || img.src.includes("placeholder")) return;
            this.setBg(img.src);
        }
     };
@@ -195,7 +201,7 @@ class GalaxyTheme {
 
     this.isDim = !(this.notDimPages.some((page) => pathname.includes(page)) || pathname === "/");
     const bgImageWrapper = this.bgContainer.children[0];
-    bgImageWrapper.style.webkitMaskImage = `linear-gradient(rgba(0, 0, 0, ${this.isDim ? 0.3 : 0.75}) 0px, rgba(0, 0, 0, 0.1) 90%)`;
+    // Removed gradient mask - using CSS gradual blur instead
 
     this.waitForElement([".main-topBar-topbarContentWrapper"], ([topbarWrapper]) => {
       this.isDim ? topbarWrapper.classList.add("center") : topbarWrapper.classList.remove("center");
@@ -227,12 +233,7 @@ class GalaxyTheme {
             scrollNode.setAttribute("fade", "full");
         }
         
-        // Dynamic dim for main scroll node
-        if(!this.isDim && scrollNode.closest('.Root__main-view')) {
-            let dimValue = 0.75 - scrollNode.scrollTop / 1000;
-            if(dimValue < 0.3) dimValue = 0.3;
-            this.bgContainer.children[0].style.webkitMaskImage = `linear-gradient(rgba(0, 0, 0, ${dimValue}) 0px, rgba(0, 0, 0, 0.1) 90%)`;
-        }
+        // Removed dynamic dim - using CSS gradual blur instead
      });
   }
 

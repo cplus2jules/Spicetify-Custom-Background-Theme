@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spicetify Galaxy Dev Server</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; line-height: 1.6; background: #121212; color: white; }
+        h1 { color: #1DB954; }
+        .status { padding: 20px; border-radius: 8px; background: #282828; border: 1px solid #333; }
+        ul { list-style: none; padding: 0; }
+        li { margin: 10px 0; }
+        a { color: #1DB954; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+        code { background: #333; padding: 2px 6px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Galaxy Dev Server Active</h1>
+    <div class="status">
+        <p>If you see this page, your local development server is running correctly.</p>
+        <p>Verify your assets are reachable:</p>
+        <ul>
+            <li>🔗 <a href="/theme.js" target="_blank">View theme.js</a></li>
+            <li>🔗 <a href="/user.css" target="_blank">View user.css</a></li>
+            <li>🔗 <a href="/@vite/client" target="_blank">View Vite HMR Client</a></li>
+        </ul>
+        <hr>
+        <p><strong>Next Step:</strong> Run <code>spicetify apply</code> in your terminal.</p>
+    </div>
+</body>
+</html>
