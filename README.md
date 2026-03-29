@@ -57,18 +57,11 @@ Then run these commands to apply:
 
 ```powershell
 spicetify config current_theme Galaxy
-spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
+spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
 spicetify apply
 ```
 
-To enable the extension (which is a necessary step), add the file `extension.js` into the `Extensions` folder in `%localappdata%\spicetify`.
-
-Then run the commands:
-
-```powershell
-spicetify config extensions galaxy.js
-spicetify apply
-```
+*Note: Since the script is named `theme.js` and placed inside the theme folder, Spicetify automatically loads it! You do not need a separate `extension.js` file.*
 
 ---
 
