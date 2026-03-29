@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install
+        
+      - name: Verify Core Files
+        run: |
+          test -f user.css || (echo "user.css is missing" && exit 1)
+          test -f theme.js || (echo "theme.js is missing" && exit 1)
+          test -f color.ini || (echo "color.ini is missing" && exit 1)
+          test -f manifest.json || (echo "manifest.json is missing" && exit 1)
+          echo "All core theme files are present."

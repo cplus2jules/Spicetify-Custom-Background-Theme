@@ -1,0 +1,32 @@
+name: Release Theme
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Prepare Galaxy folder
+        run: |
+          mkdir Galaxy
+          cp -r assets/ color.ini manifest.json theme.js user.css README.md preview/ Galaxy/
+
+      - name: Create Archive
+        run: zip -r Galaxy.zip Galaxy
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: Galaxy.zip
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
