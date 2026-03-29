@@ -62,7 +62,16 @@ class GalaxyTheme {
     if (document.querySelector(".bg-main-container")) return;
     this.bgContainer = document.createElement("div");
     this.bgContainer.className = "bg-main-container";
-    this.bgContainer.innerHTML = `<div class="bg-image-container"><img class="bg-main-image"></div><div class="bg-main-shadow"></div>`;
+    
+    let blurLayers = '';
+    for (let i = 1; i <= 5; i++) {
+       blurLayers += `<div class="gradual-blur-layer gradual-blur-layer-${i}"></div>`;
+    }
+    
+    this.bgContainer.innerHTML = `
+        <div class="bg-image-container"><img class="bg-main-image"></div>
+        <div class="gradual-blur-container">${blurLayers}</div>
+    `;
     this.bgImage = this.bgContainer.querySelector(".bg-main-image");
     document.body.prepend(this.bgContainer);
   }
@@ -84,17 +93,29 @@ class GalaxyTheme {
   observeEntityImage() {
     if (this.entityObserver) this.entityObserver.disconnect();
     
-    this.waitForElement([".main-entityHeader-imageContainer img", ".main-entityHeader-image"], ([img]) => {
-      if (img && img.src) this.setBg(img.src);
+    let lastSrc = "";
+    const checkForImage = () => {
+       const img = document.querySelector(".main-entityHeader-imageContainer img") || document.querySelector(".main-entityHeader-image");
+       if (img && img.src && img.src !== lastSrc) {
+           lastSrc = img.src;
+           this.setBg(img.src);
+       }
+    };
+    
+    // Quick polling for React render delay
+    setTimeout(checkForImage, 50);
+    setTimeout(checkForImage, 300);
+    setTimeout(checkForImage, 800);
+
+    this.waitForElement([".os-viewport main", ".Root__main-view"], (elements) => {
+      const mainContent = elements.find(e => e);
+      if(!mainContent) return;
       
       this.entityObserver = new MutationObserver((mutations) => {
-        mutations.forEach((m) => {
-          if (m.type === "attributes" && m.attributeName === "src") {
-            this.setBg(m.target.src);
-          }
-        });
+         checkForImage();
       });
-      if (img) this.entityObserver.observe(img, { attributes: true });
+      // Watch the entire structural tree for changes! Destroys bug where React component unmount breaks observer.
+      this.entityObserver.observe(mainContent, { childList: true, subtree: true, attributes: true, attributeFilter: ["src"] });
     });
   }
 
@@ -125,14 +146,14 @@ class GalaxyTheme {
   }
 
   loopOptions(page) {
-    const bgShadow = document.querySelector(".bg-main-shadow");
-    if (!bgShadow) return;
+    const bgBlurContainer = document.querySelector(".gradual-blur-container");
+    if (!bgBlurContainer) return;
 
     if (page === "/") {
-      bgShadow.classList.toggle("blur-enabled", this.config.blurHomeBackground || false);
+      bgBlurContainer.classList.toggle("blur-enabled", this.config.blurHomeBackground || false);
       this.config.useCurrSongAsHome ? this.fetchCurrTrackAlbumImage() : this.setBg(this.startImage);
     } else {
-      bgShadow.classList.toggle("blur-enabled", this.config.blurAllBackgrounds || false);
+      bgBlurContainer.classList.toggle("blur-enabled", this.config.blurAllBackgrounds || false);
       if (this.config.useHomeEverywhere) {
         this.config.useCurrSongAsHome ? this.fetchCurrTrackAlbumImage() : this.setBg(this.startImage);
       }

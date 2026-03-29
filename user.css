@@ -23,16 +23,6 @@ NAVIGATION BAR
 .Root__nav-bar {
     background: linear-gradient(rgba(var(--spice-rgb-sidebar), 0.3) 50%, transparent) !important;
     border-radius: 0 !important;
-    margin-top: -64px !important;
-}
-.Root__nav-bar .main-yourLibraryX-libraryContainer {
-    padding-top: 64px !important;
-}
-.Root__right-sidebar {
-    margin-top: -64px !important;
-}
-.Root__top-container {
-    padding-top: 0 !important;
 }
 .Root__top-bar {
     z-index: 10 !important;
@@ -355,6 +345,7 @@ MAIN VIEW
 
 .main-trackList-playingIcon {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg id='playing-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 24'%3E%3Cdefs%3E%3Cstyle%3E %23playing-icon %7B fill: %2320BC54; %7D @keyframes play %7B 0%25 %7Btransform: scaleY(1);%7D 3.3%25 %7Btransform: scaleY(0.9583);%7D 6.6%25 %7Btransform: scaleY(0.9166);%7D 9.9%25 %7Btransform: scaleY(0.8333);%7D 13.3%25 %7Btransform: scaleY(0.7083);%7D 16.6%25 %7Btransform: scaleY(0.5416);%7D 19.9%25 %7Btransform: scaleY(0.4166);%7D 23.3%25 %7Btransform: scaleY(0.25);%7D 26.6%25 %7Btransform: scaleY(0.1666);%7D 29.9%25 %7Btransform: scaleY(0.125);%7D 33.3%25 %7Btransform: scaleY(0.125);%7D 36.6%25 %7Btransform: scaleY(0.1666);%7D 39.9%25 %7Btransform: scaleY(0.1666);%7D 43.3%25 %7Btransform: scaleY(0.2083);%7D 46.6%25 %7Btransform: scaleY(0.2916);%7D 49.9%25 %7Btransform: scaleY(0.375);%7D 53.3%25 %7Btransform: scaleY(0.5);%7D 56.6%25 %7Btransform: scaleY(0.5833);%7D 59.9%25 %7Btransform: scaleY(0.625);%7D 63.3%25 %7Btransform: scaleY(0.6666);%7D 66.6%25 %7Btransform: scaleY(0.6666);%7D 69.9%25 %7Btransform: scaleY(0.6666);%7D 73.3%25 %7Btransform: scaleY(0.6666);%7D 76.6%25 %7Btransform: scaleY(0.7083);%7D 79.9%25 %7Btransform: scaleY(0.75);%7D 83.3%25 %7Btransform: scaleY(0.8333);%7D 86.6%25 %7Btransform: scaleY(0.875);%7D 89.9%25 %7Btransform: scaleY(0.9166);%7D 93.3%25 %7Btransform: scaleY(0.9583);%7D 96.6%25 %7Btransform: scaleY(1);%7D %7D %23bar1 %7B transform-origin: bottom; animation: play 0.9s -0.51s infinite; %7D %23bar2 %7B transform-origin: bottom; animation: play 0.9s infinite; %7D %23bar3 %7B transform-origin: bottom; animation: play 0.9s -0.15s infinite; %7D %23bar4 %7B transform-origin: bottom; animation: play 0.9s -0.75s infinite; %7D %3C/style%3E%3C/defs%3E%3Ctitle%3Eplaying-icon%3C/title%3E%3Crect id='bar1' class='cls-1' width='4' height='24'/%3E%3Crect id='bar2' class='cls-1' x='6' width='4' height='24'/%3E%3Crect id='bar3' class='cls-1' x='12' width='4' height='24'/%3E%3Crect id='bar4' class='cls-1' x='18' width='4' height='24'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg id='playing-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 24'%3E%3Cdefs%3E%3Cstyle%3E %23playing-icon %7B fill: %2320BC54; %7D @keyframes play %7B 0%25 %7Btransform: scaleY(1);%7D 3.3%25 %7Btransform: scaleY(0.9583);%7D 6.6%25 %7Btransform: scaleY(0.9166);%7D 9.9%25 %7Btransform: scaleY(0.8333);%7D 13.3%25 %7Btransform: scaleY(0.7083);%7D 16.6%25 %7Btransform: scaleY(0.5416);%7D 19.9%25 %7Btransform: scaleY(0.4166);%7D 23.3%25 %7Btransform: scaleY(0.25);%7D 26.6%25 %7Btransform: scaleY(0.1666);%7D 29.9%25 %7Btransform: scaleY(0.125);%7D 33.3%25 %7Btransform: scaleY(0.125);%7D 36.6%25 %7Btransform: scaleY(0.1666);%7D 39.9%25 %7Btransform: scaleY(0.1666);%7D 43.3%25 %7Btransform: scaleY(0.2083);%7D 46.6%25 %7Btransform: scaleY(0.2916);%7D 49.9%25 %7Btransform: scaleY(0.375);%7D 53.3%25 %7Btransform: scaleY(0.5);%7D 56.6%25 %7Btransform: scaleY(0.5833);%7D 59.9%25 %7Btransform: scaleY(0.625);%7D 63.3%25 %7Btransform: scaleY(0.6666);%7D 66.6%25 %7Btransform: scaleY(0.6666);%7D 69.9%25 %7Btransform: scaleY(0.6666);%7D 73.3%25 %7Btransform: scaleY(0.6666);%7D 76.6%25 %7Btransform: scaleY(0.7083);%7D 79.9%25 %7Btransform: scaleY(0.75);%7D 83.3%25 %7Btransform: scaleY(0.8333);%7D 86.6%25 %7Btransform: scaleY(0.875);%7D 89.9%25 %7Btransform: scaleY(0.9166);%7D 93.3%25 %7Btransform: scaleY(0.9583);%7D 96.6%25 %7Btransform: scaleY(1);%7D %7D %23bar1 %7B transform-origin: bottom; animation: play 0.9s -0.51s infinite; %7D %23bar2 %7B transform-origin: bottom; animation: play 0.9s infinite; %7D %23bar3 %7B transform-origin: bottom; animation: play 0.9s -0.15s infinite; %7D %23bar4 %7B transform-origin: bottom; animation: play 0.9s -0.75s infinite; %7D %3C/style%3E%3C/defs%3E%3Ctitle%3Eplaying-icon%3C/title%3E%3Crect id='bar1' class='cls-1' width='4' height='24'/%3E%3Crect id='bar2' class='cls-1' x='6' width='4' height='24'/%3E%3Crect id='bar3' class='cls-1' x='12' width='4' height='24'/%3E%3Crect id='bar4' class='cls-1' x='18' width='4' height='24'/%3E%3C/svg%3E");
     background: var(--spice-text);
     content-visibility: hidden;
     -webkit-mask-repeat: no-repeat;
@@ -536,11 +527,31 @@ HIDE BACKGROUNDS
 -------------------
 */
 .main-actionBarBackground-background,
+[class*="main-actionBarBackground"],
 .BL__GuO2JsHMR6RgNfwY,
 .rezqw3Q4OEPB1m4rmwfw,
 .main-nowPlayingBar-container,
+.main-entityHeader-background,
+.main-entityHeader-backgroundColor,
+.main-entityHeader-overlay,
+.main-actionButtons,
+[class*="main-entityHeader-backgroundColor"] {
+    background: transparent !important;
+    background-image: none !important;
+    background-color: transparent !important;
+}
 .Root__top-container {
-    background: none !important;
+    padding-top: 28px !important; /* Pushes content cleanly down below macOS Traffic Lights */
+    background: transparent !important;
+}
+/* Spotify 1.2+ Universal Transparency */
+.Root__globalNav,
+.Root__nav-bar,
+.Root__right-sidebar,
+.Root__main-view,
+.main-yourLibraryX-background,
+.spotify__container--is-desktop {
+    background: transparent !important;
 }
 .main-entityHeader-background.main-entityHeader-overlay,
 .main-entityHeader-backgroundColor {
@@ -564,11 +575,19 @@ div.main-topBar-topbarContentWrapper.center > div > div > form > input{
 }
 div.main-view-container__scroll-node-child > main > div ,
 div.main-view-container__scroll-node-child > main > div:after,
+div.main-view-container__scroll-node-child > main > div::before,
 div.main-view-container__scroll-node-child > main > div > div,
 div.main-view-container__scroll-node-child > main > div > div:after,
+div.main-view-container__scroll-node-child > main > div > div::before,
 .os-viewport main, .os-viewport main > div, .os-viewport main > div > div,
-.os-viewport main > div::after, .os-viewport main > div > div::after {
-    background:transparent !important;
+.os-viewport main > div::after, .os-viewport main > div > div::after,
+.os-viewport main > div::before, .os-viewport main > div > div::before,
+.os-viewport main section > div:first-child,
+.os-viewport main section > div:first-child::before,
+.os-viewport main section > div:first-child::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
 }
 div.main-view-container__scroll-node-child > main > section[data-testid="artist-page"] > div > div,
 .os-viewport main > section[data-testid="artist-page"] > div > div,
@@ -577,6 +596,8 @@ div.main-view-container__scroll-node-child > main > section[data-testid="artist-
 .under-main-view,
 .main-entityHeader-background.main-entityHeader-overlay {
     background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
 }
 div.main-gridContainer-gridContainer.main-shelf-shelfGrid> div[data-testid="top-result-card"] > div{
     background-color:rgba(0,0,0,0.7);
@@ -752,12 +773,6 @@ BACKGROUND ELEMENTS
     z-index: -1;
     pointer-events: none;
 }
-.bg-main-shadow {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.8) 100%) !important;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
 .bg-image-container {
     -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.75) 0px, rgba(0, 0, 0, 0.1) 100%);
     mask-image: linear-gradient(rgba(0, 0, 0, 0.75) 0px, rgba(0, 0, 0, 0.1) 100%);
@@ -773,15 +788,58 @@ img.bg-main-image {
     -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 0, black 250px, black calc(100% - 250px), rgba(0, 0, 0, 0.9) 100%);
     mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 0, black 250px, black calc(100% - 250px), rgba(0, 0, 0, 0.9) 100%);
 }
+
+/* GRADUAL BLUR LAYERS */
+.gradual-blur-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1; /* Sits directly over the background image layer */
+}
+
+.gradual-blur-container.blur-enabled {
+    backdrop-filter: blur(8px);
+}
+
+.gradual-blur-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.gradual-blur-layer-1 {
+    backdrop-filter: blur(2px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 35%, transparent 50%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 35%, transparent 50%);
+}
+.gradual-blur-layer-2 {
+    backdrop-filter: blur(5px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 35%, black 50%, black 70%, transparent 85%);
+    mask-image: linear-gradient(to bottom, transparent 35%, black 50%, black 70%, transparent 85%);
+}
+.gradual-blur-layer-3 {
+    backdrop-filter: blur(10px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 70%, black 85%, black 100%);
+    mask-image: linear-gradient(to bottom, transparent 70%, black 85%, black 100%);
+}
+.gradual-blur-layer-4 {
+    backdrop-filter: blur(20px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 85%, black 100%);
+    mask-image: linear-gradient(to bottom, transparent 85%, black 100%);
+}
+.gradual-blur-layer-5 {
+    backdrop-filter: blur(40px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 95%, black 100%);
+    mask-image: linear-gradient(to bottom, transparent 95%, black 100%);
+    background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.45) 100%);
+}
+
 .lyrics-lyrics-background {
     display: none;
 }
 .lyrics-lyricsContainer-LyricsContainer{
     --lyrics-color-background:none !important;
-}
-/* blur background when option is enabled */
-.bg-main-shadow.blur-enabled {
-    backdrop-filter: blur(8px);
 }
 /*
 -------------------
