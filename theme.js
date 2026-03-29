@@ -307,8 +307,21 @@ class GalaxyTheme {
         if (!bannerInput.files.length) return;
         const reader = new FileReader();
         reader.onload = (e) => {
-            img.src = e.target.result;
-            srcInput.value = "";
+            const imgElement = new Image();
+            imgElement.onload = () => {
+                const canvas = document.createElement("canvas");
+                let { width, height } = imgElement;
+                if (width > 1200 || height > 1200) {
+                    const ratio = Math.min(1200 / width, 1200 / height);
+                    width *= ratio; height *= ratio;
+                }
+                canvas.width = width; canvas.height = height;
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(imgElement, 0, 0, width, height);
+                img.src = canvas.toDataURL("image/jpeg", 0.7);
+                srcInput.value = "";
+            };
+            imgElement.src = e.target.result;
         };
         reader.readAsDataURL(bannerInput.files[0]);
      };
@@ -385,8 +398,21 @@ class GalaxyTheme {
                       if (!bannerInput.files.length) return;
                       const reader = new FileReader();
                       reader.onload = (e) => {
-                          bannerSelect.querySelector("img").src = e.target.result;
-                          srcInput.value = "";
+                          const imgElement = new Image();
+                          imgElement.onload = () => {
+                              const canvas = document.createElement("canvas");
+                              let { width, height } = imgElement;
+                              if (width > 1200 || height > 1200) {
+                                  const ratio = Math.min(1200 / width, 1200 / height);
+                                  width *= ratio; height *= ratio;
+                              }
+                              canvas.width = width; canvas.height = height;
+                              const ctx = canvas.getContext("2d");
+                              ctx.drawImage(imgElement, 0, 0, width, height);
+                              bannerSelect.querySelector("img").src = canvas.toDataURL("image/jpeg", 0.7);
+                              srcInput.value = "";
+                          };
+                          imgElement.src = e.target.result;
                       };
                       reader.readAsDataURL(bannerInput.files[0]);
                   };
