@@ -1,6 +1,9 @@
-# Spicetify Galaxy
+# Spicetify-Custom-Background-Theme
 
 ### A fully dynamic and customisable theme that uses fullscreen images to greatly improve your Spotify experience.
+
+> [!NOTE]
+> **ABOUT:** A forked repo of the Spicetify-Galaxy with major bug fixes, new supported layout for macOS 1.2.x and Windows 11, and issues addressed from the original repository.
 
 > [!WARNING]
 > **HEAVY DEVELOPMENT:** This version of the theme is currently undergoing a major refactor for Spotify v1.2.x. Features and UI are subject to rapid change.
